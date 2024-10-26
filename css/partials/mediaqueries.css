@@ -1,0 +1,164 @@
+
+
+@media(min-width: 768px) {
+
+
+    /*HEADER*/
+
+    .headersection {
+
+        display: flex;
+        background-color: #00B52E;
+        height: 80px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10%;
+    
+        .mainTitle {
+            display: flex;
+            color: #fafafa;
+            font-weight: bolder;
+            font-size: 30px;
+    
+            
+            .oColor {
+               color: #ffdf00;
+            }
+        }
+    
+        .mobilTitle {
+
+            display: none;
+        }
+    
+        .iconHamburger {
+    
+            display: none;
+            color: #fafafa;
+            font-size: 35px;
+            
+        }
+    
+        .navList {
+    
+            display: flex;
+            justify-items: center;
+            gap: 15px;
+    
+            .navLink {
+    
+                text-decoration: none;
+                color: #fafafa;
+                font-size: 0.9em;
+    
+    
+            }
+        }
+    
+        .headerIcons {
+    
+            display: flex;
+            color: #fafafa;
+            font-size: 20px;
+            gap: 15px;
+        }
+    
+    
+    
+        .grey {
+    
+       
+            color: #ffdf00;
+           
+        }
+    }
+    
+
+}
+
+
+
+
+
+footer {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00B52E;
+    color: #fafafa;
+    text-align: center;
+    font-size: 0.4em;
+}
+
+
+/*FOOTR*/
+
+
+
+footer {
+
+    font-size: 0.9em;
+}
+
+
+@media(min-width: 1024px) {
+
+
+    /*HEADER*/
+
+    .headersection {
+
+    
+    
+        .mainTitle {
+            
+            display: flex;
+            font-size: 35px;
+    
+            
+            
+        }
+    
+
+        .mobilTitle{
+
+            display:none;
+        }
+        
+    
+        .navList {
+    
+        
+            gap: 40px;
+    
+            .navLink {
+    
+            
+                font-size: 1.05em;
+    
+            }
+        }
+    
+        .headerIcons {
+    
+            font-size: 25px;
+            gap: 30px;
+        }
+    
+    
+    }
+    
+
+
+    /*FOOTR*/
+
+
+
+footer {
+
+    font-size: 1.05em;
+}
+
+
+}
