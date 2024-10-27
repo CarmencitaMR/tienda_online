@@ -19,12 +19,49 @@ const products = [
 
 let $main = document.querySelector('main');
 
+// Creo el contenedor Div para el carrito de compras que incluye un titulo, total y dos botones.
+
+let $shopContainer = document.createElement('div');
+$shopContainer.classList = 'shopContainer';
+
+let $shopTitle = document.createElement('h4');
+$shopTitle.classList = 'shopTitle';
+$shopTitle.textContent = 'Carrito de Compras';
+$shopContainer.appendChild($shopTitle);
+
+
+let $priceTotal = document.createElement('p');
+$priceTotal.classList = 'priceTotal';
+$priceTotal.textContent= 'Total:' + ' ' + '€';
+$shopContainer.appendChild($priceTotal);
+
+let $priceTotalSpan = document.createElement('span');
+$priceTotalSpan.classList = 'priceTotalSpan';
+$priceTotalSpan.textContent = '0';
+$shopContainer.appendChild($priceTotalSpan);
+
+let $shopButtonDelete = document.createElement('button');
+$shopButtonDelete.classList = 'shopButtonDelet';
+$shopButtonDelete.textContent = 'Vaciar Carrito';
+$shopContainer.appendChild($shopButtonDelete);
+
+
+let $shopButtonProceed = document.createElement('button');
+$shopButtonProceed.classList = 'shopButtonProceed';
+$shopButtonProceed.textContent = 'Proceder a Comprar';
+$shopContainer.appendChild($shopButtonProceed);
+
+
+$main.appendChild($shopContainer);
+
+
 // Creo una sección donde incluyo el cuadro de productos y lo incluyo en el mains
 
 let $mainSection = document.createElement('section');
 $mainSection.classList = 'mainSection'
 $main.appendChild($mainSection);
 console.log($mainSection);
+
 
 /*Recorro el array de productos para crear por cada producto un contendor div que contendrá a su vez una imagen (dentro de un figure, un titulo con el nombre del producto, un párrafo con la descripción, un párrafo para incluir el precio del producto y un boton para poder agregar el producto al carro)*/
 
@@ -78,4 +115,6 @@ $containerPlant.appendChild($buttonPlant);
 $mainSection.appendChild($containerPlant);
 
 }
+
+
 

@@ -5,6 +5,75 @@ main{
 
 }
 
+.shopContainer {
+
+    background-color: #ffffff;
+    width: 30%;
+    height: auto;
+    border-radius: 2%;
+    margin-left: 2%;
+    padding: 30px 30px;
+    position: absolute;
+
+    .shopTitle{
+
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 20px;
+  
+    
+    }
+
+    .priceTotal{
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 20px 0;
+        display: inline;
+        
+
+
+    }
+
+    .priceTotalSpan{
+        display:inline;
+        font-size: 1.2em;
+        font-weight: bold;
+      
+
+    }
+
+
+    .shopButtonDelet {
+
+        background-color: #00B52E; 
+        border:none;
+        width: 100%;
+        height: 50px;
+        color:  #fafafa;
+        font-size: 1.1em;
+        padding: auto;
+        border-radius: 7px;
+        margin: 20px 0;
+        
+    }
+
+
+    .shopButtonProceed {
+
+        background-color: #00B52E; 
+        border:none;
+        width: 100%;
+        height: 50px;
+        color:  #fafafa;
+        font-size: 1.1em;
+        padding: auto;
+        border-radius: 7px;
+
+    }
+
+    
+}
+
 .mainSection {
 
     display: block;
