@@ -1,5 +1,3 @@
-
-
 @media(min-width: 768px) {
 
 
@@ -7,189 +5,102 @@
 
     .headersection {
 
-        display: flex;
-        background-color: #00B52E;
-        height: 80px;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10%;
-    
         .mainTitle {
             display: flex;
             color: #fafafa;
             font-weight: bolder;
             font-size: 30px;
-    
-            
+
+
             .oColor {
-               color: #ffdf00;
+                color: #ffdf00;
             }
         }
-    
+
         .mobilTitle {
 
             display: none;
         }
-    
+
         .iconHamburger {
-    
+
             display: none;
-            color: #fafafa;
-            font-size: 35px;
-            
+
         }
-    
+
         .navList {
-    
+
             display: flex;
-            justify-items: center;
             gap: 15px;
-    
+
             .navLink {
-    
-                text-decoration: none;
-                color: #fafafa;
+
                 font-size: 0.9em;
-    
-    
             }
         }
-    
+
         .headerIcons {
-    
-            display: flex;
-            color: #fafafa;
+
             font-size: 20px;
             gap: 15px;
         }
-    
-    
-    
-        .grey {
-    
-       
-            color: #ffdf00;
-           
-        }
+
     }
-    
-
-}
 
 
-/*MAIN*/
+
+    /*MAIN*/
 
 
-.mainSection {
+    .mainSection {
 
-    
-    padding: 40px 10%;
-    display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 40px 7%;
 
-  
-
-    .containerPlant{
-        
-        background-color: #ffffff;
-        text-align: center;
-        border-radius: 2%;
-        margin: 20px 20px;
-        padding: 20px 20px;
+        .containerPlant{
         
 
-
-        .figureImg{
-
-            width: 33,33%;
-            height: auto;
-            border-radius: 2%;
-            
-         
-
-
-        .imagePlant {
-
-            width: 100%;
-            border-radius: 2%;
-
+            .descriptionPlant {
+    
+                min-height: 90px;
             }
-        }
-
-        .namePlant{
-
-            color: #333333;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin: 30px 0 20px 0;
-        }
-
-        .descriptionPlant {
-
-            color: #333333;
-            margin: 20px 0;
-            line-height: 23px;
-        }
-
-        .priceUnitPlant {
-            
-            color: #333333;
-            margin: 20px 0;
 
         }
-
-
-        .buttonPlant {
-
-            background-color: #00B52E; 
-            border:none;
-            width: 100%;
-            height: 50px;
-            color:  #fafafa;
-            font-size: 1.1em;
-            padding: auto;
-            border-radius: 7px;
-
-
-
-        }
-
-
-     
     }
-
-  
-
-
-   
-
-}
 
 
 
 
 /*FOOTER*/
 
-footer {
+    footer {
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #00B52E;
-    color: #fafafa;
-    text-align: center;
-    font-size: 0.4em;
+        height: 80px;
+        background-color: #00B52E;
+        color: #fafafa;
+        text-align: center;
+        line-height: 80px;
+        font-size: 0.9em;
+        
+   
+        }
+
 }
 
 
-/*FOOTR*/
 
 
 
-footer {
 
-    font-size: 0.9em;
-}
+
+
+
+
+
+
+
+
 
 
 @media(min-width: 1024px) {
@@ -199,56 +110,86 @@ footer {
 
     .headersection {
 
-    
-    
+
+
         .mainTitle {
-            
+
             display: flex;
             font-size: 35px;
-    
-            
-            
-        }
-    
 
-        .mobilTitle{
-
-            display:none;
         }
-        
-    
+
+
+        .mobilTitle {
+
+            display: none;
+        }
+
+
         .navList {
-    
-        
+
+
             gap: 40px;
-    
+
             .navLink {
-    
-            
+
+
                 font-size: 1.05em;
-    
+
             }
         }
-    
+
         .headerIcons {
-    
+
             font-size: 25px;
             gap: 30px;
         }
-    
-    
+
+
     }
+
+
+     /*MAIN*/
+
+
+     .mainSection {
+
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        padding: 40px 7%;
+
+        .containerPlant{
+
+
+            .namePlant{
+
+                min-height: 20px;
+            }
+            
+        
+
+            .descriptionPlant {
     
+                min-height: 70px;
+            }
 
 
-    /*FOOTR*/
+
+        }
+
+
+    }
 
 
 
-footer {
+    /*FOOTER*/
 
-    font-size: 1.05em;
-}
+
+
+    footer {
+
+        font-size: 1.05em;
+    }
 
 
 }
