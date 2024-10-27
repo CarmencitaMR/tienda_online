@@ -1,0 +1,99 @@
+
+main{
+
+    background-color: #f1fcf1;
+
+}
+
+.mainSection {
+
+    display: grid;
+    justify-items: center;
+    padding: 40px 15px;
+    
+  
+
+    .containerPlant{
+        
+        background-color: #ffffff;
+        text-align: center;
+        border-radius: 2%;
+        margin: 20px 20px;
+        padding: 20px 20px;
+        transition: all 0.500s ease;
+  
+
+
+        .figureImg{
+
+            width: 33,33%;
+            height: auto;
+            border-radius: 2%;
+            
+         
+
+
+        .imagePlant {
+
+            width: 100%;
+            border-radius: 2%;
+
+            }
+        }
+
+        .namePlant{
+
+            color: #333333;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 30px 0 20px 0;
+        }
+
+        .descriptionPlant {
+
+            color: #333333;
+            margin: 20px 0;
+            line-height: 23px;
+            min-height: 70px;
+        }
+
+        .priceUnitPlant {
+
+            color: #333333;
+            margin: 20px 0;
+
+        }
+
+
+        .buttonPlant {
+
+            background-color: #00B52E; 
+            border:none;
+            width: 100%;
+            height: 50px;
+            color:  #fafafa;
+            font-size: 1.1em;
+            padding: auto;
+            border-radius: 7px;
+
+
+
+        }
+
+
+     
+    }
+
+    .containerPlant:hover{
+
+        transform:scale(105%);
+
+     
+     }
+       
+  
+
+
+   
+
+}

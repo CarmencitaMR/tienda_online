@@ -1,19 +1,13 @@
 .headersection {
 
     display: flex;
-    justify-content: space-evenly;
-    justify-items: center;
+    justify-content: space-around;
+    align-items: center;
     background-color: #00B52E;
     height: 80px;
-    align-items: center;
-    padding: 15px;
-    
- 
-
-
+    padding: 0 15px;
 
    
-
     .mainTitle {
         
         display: none;
