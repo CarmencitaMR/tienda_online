@@ -24,7 +24,6 @@
         }
     }
 
-    
 
     .iconHamburger {
 
@@ -52,7 +51,6 @@
             color: #fafafa;
             font-size: 0.4em;
 
-
         }
     }
 
@@ -65,11 +63,8 @@
         gap: 10px;
     }
 
+    .yellow {
 
-
-    .grey {
-
-   
         color: #ffdf00;
        
     }

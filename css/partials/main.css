@@ -5,41 +5,41 @@ main{
 
 }
 
+/*CONTENEDOR CARRITO DE LA COMPRA*/
+
 .shopContainer {
 
+    display: none;
     background-color: #ffffff;
-    width: 30%;
+    width: 80%;
     height: auto;
     border-radius: 2%;
-    margin-left: 2%;
+    margin: 0 2%;
     padding: 30px 30px;
     position: absolute;
+    
 
     .shopTitle{
 
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: bold;
         margin-bottom: 20px;
   
-    
     }
 
     .priceTotal{
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: bold;
         margin: 20px 0;
         display: inline;
-        
-
-
+    
     }
 
     .priceTotalSpan{
         display:inline;
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: bold;
       
-
     }
 
 
@@ -48,9 +48,9 @@ main{
         background-color: #00B52E; 
         border:none;
         width: 100%;
-        height: 50px;
+        height: 45px;
         color:  #fafafa;
-        font-size: 1.1em;
+        font-size: 1em;
         padding: auto;
         border-radius: 7px;
         margin: 20px 0;
@@ -63,9 +63,9 @@ main{
         background-color: #00B52E; 
         border:none;
         width: 100%;
-        height: 50px;
+        height: 45px;
         color:  #fafafa;
-        font-size: 1.1em;
+        font-size: 1em;
         padding: auto;
         border-radius: 7px;
 
@@ -74,14 +74,24 @@ main{
     
 }
 
+
+.showCart {
+
+    display: block;
+
+}
+
+/*CONTENEDOR - SECCIÓN PRODUCTOS*/
+
+    
+
+
 .mainSection {
 
     display: block;
     justify-items: center;
     padding: 40px 15px;
     
-  
-
     .containerPlant{
         
         background-color: #ffffff;
@@ -90,7 +100,6 @@ main{
         margin: 20px 20px;
         padding: 20px 20px;
         transition: all 0.500s ease;
-  
 
 
         .figureImg{
@@ -99,8 +108,6 @@ main{
             height: auto;
             border-radius: 2%;
             
-         
-
 
         .imagePlant {
 
@@ -146,11 +153,7 @@ main{
             padding: auto;
             border-radius: 7px;
 
-
-
         }
-
-
      
     }
 
@@ -158,9 +161,7 @@ main{
 
         transform:scale(105%);
 
-     
      }
     
    
-
 }

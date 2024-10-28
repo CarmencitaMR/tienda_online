@@ -52,6 +52,54 @@
     /*MAIN*/
 
 
+    /*CONTENDOR CARRITO*/
+
+    .shopContainer {
+
+       
+        width: 30%;
+  
+    
+        .shopTitle{
+    
+            font-size: 1.2em;
+           
+        }
+    
+        .priceTotal{
+            font-size: 1.2em;
+            
+    
+        }
+    
+        .priceTotalSpan{
+           
+            font-size: 1.2em;
+           
+        }
+    
+    
+        .shopButtonDelet {
+    
+            height: 50px;
+            font-size: 1.1em;
+        
+        }
+    
+    
+        .shopButtonProceed {
+    
+            height: 50px;
+            font-size: 1.1em;
+           
+        }
+    
+        
+    }
+
+    /* CONTENEDOR - SECCION PRODUCTOS*/
+
+
     .mainSection {
 
         display: grid;
@@ -92,11 +140,7 @@
 
 
 
-
-
-
-
-
+/* ------------------------- 1024 ------------------------------*/
 
 
 
@@ -151,6 +195,8 @@
 
      /*MAIN*/
 
+     /*CONTENEDOR - SECCIÓN PRODUCTOS*/
+
 
      .mainSection {
 
@@ -173,8 +219,6 @@
                 min-height: 70px;
             }
 
-
-
         }
 
 
@@ -183,8 +227,6 @@
 
 
     /*FOOTER*/
-
-
 
     footer {
 

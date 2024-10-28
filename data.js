@@ -118,3 +118,24 @@ $mainSection.appendChild($containerPlant);
 
 
 
+eventClikShopCart();
+
+
+function eventClikShopCart() {
+
+        let $shopCartIcon = document.querySelector('.yellow');
+        console.log($shopCartIcon);
+        $shopCartIcon.addEventListener('click', showCart);
+}
+
+
+function showCart() {
+
+
+
+        let $shopContainer = document.querySelector('.shopContainer');
+        $shopContainer.classList.add('showCart');
+
+}
+
+
