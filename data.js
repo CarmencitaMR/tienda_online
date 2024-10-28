@@ -118,6 +118,8 @@ $mainSection.appendChild($containerPlant);
 
 
 
+
+let clickCartIcon = 1;
 eventClikShopCart();
 
 
@@ -129,13 +131,30 @@ function eventClikShopCart() {
 }
 
 
+
 function showCart() {
 
 
+        if (clickCartIcon === 1) {
+                let $shopContainer = document.querySelector('.shopContainer');
+                $shopContainer.classList.add('showCart');
+                clickCartIcon +=1;
+                
+        } else {
+                let $shopContainer = document.querySelector('.shopContainer');
+                $shopContainer.classList.remove('showCart');
+                clickCartIcon = 1;
+        }
 
-        let $shopContainer = document.querySelector('.shopContainer');
-        $shopContainer.classList.add('showCart');
+        
 
 }
 
 
+
+/*if($firstCard === null) {
+        //Primer click
+        $firstCard = this;
+    } else {
+        //Segundo click
+        addAttempt();*/
