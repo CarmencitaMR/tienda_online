@@ -1,5 +1,16 @@
 
 
+function init() {
+
+        loadProducts();
+        eventClickShopCart();
+        eventClickAddProductButton();
+}
+
+
+
+function loadProducts() {
+
 // Entro en el main que es donde estará contenido el cuadro de productos
 
 let $main = document.querySelector('main');
@@ -25,6 +36,7 @@ $priceTotalSpan.classList = 'priceTotalSpan';
 $priceTotalSpan.textContent = '0';
 $shopContainer.appendChild($priceTotalSpan);
 
+
 let $shopButtonDelete = document.createElement('button');
 $shopButtonDelete.classList = 'shopButtonDelet';
 $shopButtonDelete.textContent = 'Vaciar Carrito';
@@ -40,7 +52,7 @@ $shopContainer.appendChild($shopButtonProceed);
 $main.appendChild($shopContainer);
 
 
-// Creo una sección donde incluyo el cuadro de productos y lo incluyo en el mains
+// Creo una sección donde incluyo el cuadro de productos y lo incluyo en el main
 
 let $mainSection = document.createElement('section');
 $mainSection.classList = 'mainSection'
@@ -57,7 +69,6 @@ let $containerPlant = document.createElement('div');
 $containerPlant.classList = 'containerPlant';
 $containerPlant.dataset.id = product.id;
 $containerPlant.dataset.name = product.name;
-
 
 let $figureImg = document.createElement('figure');
 $figureImg.classList = 'figureImg';
@@ -93,22 +104,23 @@ let $buttonPlant = document.createElement('button');
 $buttonPlant.classList = 'buttonPlant';
 $buttonPlant.textContent = 'Agregar al carrito';
 $buttonPlant.dataset.name = product.name;
+$buttonPlant.dataset.id = product.id;
+$buttonPlant.dataset.price = product.price;
 $containerPlant.appendChild($buttonPlant);
-
-
 
 $mainSection.appendChild($containerPlant);
 
 }
 
+}
 
+
+/*EVENTO CLICK CARRITO COMPRA*/
 
 
 let clickCartIcon = 1;
-eventClikShopCart();
 
-
-function eventClikShopCart() {
+function eventClickShopCart() {
 
         let $shopCartIcon = document.querySelector('.yellow');
         console.log($shopCartIcon);
@@ -131,9 +143,56 @@ function showCart() {
                 clickCartIcon = 1;
         }
 
+}
+
+/*END EVENTO CLICK CARRITO COMPRA*/
+
+
+
+
+function eventClickAddProductButton(){
+
+        let $buttonPlant = document.querySelectorAll('.buttonPlant');
+        for (let $button of $buttonPlant) {              
+        $button.addEventListener('click', addProduct);      
+        }
+} 
+
+
+/*EVENTO CLICK BOTON AGREGAR AL CARRITO*/
+
+function addProduct() {
+
+
+        
+        let $shopContainer = document.querySelector('.shopContainer');
+        let $shopTitle = $shopContainer.querySelector('h4:nth-child(1)');
+
+ 
+        let $productAdd = document.createElement('div');
+        $productAdd.classList.add('productAdd');
+        //$productAdd.textContent = 'hola';
+        $shopTitle.after($productAdd);
+        //console.log($productAdd);
+
+        let $productAddInfo = document.createElement('p');
+        $productAddInfo.classList.add =('productAddInfo');
+        $productAddInfo.textContent = `${this.dataset.name} - ${this.dataset.price} X 1`
+        $productAdd.appendChild($productAddInfo);
+        
+        }
+      
+
+
         
 
-}
+        
+
+
+
+
+/* END EVENTO CLICK BOTON AGREGAR AL CARRITO*/
+
 
 
 
@@ -143,3 +202,6 @@ function showCart() {
     } else {
         //Segundo click
         addAttempt();*/
+
+
+        init();

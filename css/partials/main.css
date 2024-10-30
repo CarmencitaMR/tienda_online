@@ -151,6 +151,7 @@ main {
             font-size: 1.1em;
             padding: auto;
             border-radius: 7px;
+            cursor: pointer;
 
         }
 
