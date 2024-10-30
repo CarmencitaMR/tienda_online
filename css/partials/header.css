@@ -1,3 +1,5 @@
+/*HEADER*/
+
 .headersection {
 
     display: flex;
@@ -17,7 +19,6 @@
         color: #fafafa;
         font-weight: bolder;
         font-size: 23px;
-
 
         .oColor {
            color: #ffdf00;
@@ -50,8 +51,13 @@
             text-decoration: none;
             color: #fafafa;
             font-size: 0.4em;
-
         }
+
+        .initLink {
+
+            color:#ffdf00;             
+        }
+  
     }
 
     .headerIcons {
@@ -61,11 +67,15 @@
         color: #fafafa;
         font-size: 18px;
         gap: 10px;
+        cursor: pointer;
+        
     }
 
     .yellow {
 
         color: #ffdf00;
-       
+          
     }
 }
+
+/*END HEADER*/

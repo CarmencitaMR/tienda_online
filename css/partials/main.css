@@ -1,5 +1,7 @@
+/*MAIN*/
 
-main{
+
+main {
 
     background-color: #f1fcf1;
 
@@ -17,61 +19,60 @@ main{
     margin: 0 2%;
     padding: 30px 30px;
     position: absolute;
-    
 
-    .shopTitle{
+
+    .shopTitle {
 
         font-size: 1.1em;
         font-weight: bold;
         margin-bottom: 20px;
-  
+
     }
 
-    .priceTotal{
+    .priceTotal {
         font-size: 1.1em;
         font-weight: bold;
         margin: 20px 0;
         display: inline;
-    
+
     }
 
-    .priceTotalSpan{
-        display:inline;
+    .priceTotalSpan {
+        display: inline;
         font-size: 1.1em;
         font-weight: bold;
-      
+
     }
 
 
     .shopButtonDelet {
 
-        background-color: #00B52E; 
-        border:none;
+        background-color: #00B52E;
+        border: none;
         width: 100%;
         height: 45px;
-        color:  #fafafa;
+        color: #fafafa;
         font-size: 1em;
         padding: auto;
         border-radius: 7px;
         margin: 20px 0;
-        
+
     }
 
 
     .shopButtonProceed {
 
-        background-color: #00B52E; 
-        border:none;
+        background-color: #00B52E;
+        border: none;
         width: 100%;
         height: 45px;
-        color:  #fafafa;
+        color: #fafafa;
         font-size: 1em;
         padding: auto;
         border-radius: 7px;
 
     }
 
-    
 }
 
 
@@ -83,17 +84,15 @@ main{
 
 /*CONTENEDOR - SECCIÓN PRODUCTOS*/
 
-    
-
 
 .mainSection {
 
     display: block;
     justify-items: center;
     padding: 40px 15px;
-    
-    .containerPlant{
-        
+
+    .containerPlant {
+
         background-color: #ffffff;
         text-align: center;
         border-radius: 2%;
@@ -102,22 +101,22 @@ main{
         transition: all 0.500s ease;
 
 
-        .figureImg{
+        .figureImg {
 
-            width: 33,33%;
+            width: 33, 33%;
             height: auto;
             border-radius: 2%;
-            
 
-        .imagePlant {
 
-            width: 100%;
-            border-radius: 2%;
+            .imagePlant {
+
+                width: 100%;
+                border-radius: 2%;
 
             }
         }
 
-        .namePlant{
+        .namePlant {
 
             color: #333333;
             font-size: 1.2em;
@@ -144,24 +143,26 @@ main{
 
         .buttonPlant {
 
-            background-color: #00B52E; 
-            border:none;
+            background-color: #00B52E;
+            border: none;
             width: 100%;
             height: 50px;
-            color:  #fafafa;
+            color: #fafafa;
             font-size: 1.1em;
             padding: auto;
             border-radius: 7px;
 
         }
-     
+
     }
 
-    .containerPlant:hover{
+    .containerPlant:hover {
 
-        transform:scale(105%);
+        transform: scale(105%);
 
-     }
-    
-   
+    }
+
+
 }
+
+/*END MAIN*/
