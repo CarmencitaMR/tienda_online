@@ -161,13 +161,22 @@ function eventClickAddProductButton(){
 
 /*EVENTO CLICK BOTON AGREGAR AL CARRITO*/
 
+
+
+let productList = [];
+
+
 function addProduct() {
 
 
-        
+        if (!productList.includes(this.dataset.id)) {
+
+                productList.push(this.dataset.id); 
+                console.log (productList);
+
+
         let $shopContainer = document.querySelector('.shopContainer');
         let $shopTitle = $shopContainer.querySelector('h4:nth-child(1)');
-
  
         let $productAdd = document.createElement('div');
         $productAdd.classList.add('productAdd');
@@ -177,19 +186,42 @@ function addProduct() {
 
         let $productAddInfo = document.createElement('p');
         $productAddInfo.classList.add =('productAddInfo');
-        $productAddInfo.textContent = `${this.dataset.name} - ${this.dataset.price} X 1`
+        $productAddInfo.textContent = `${this.dataset.name} - € ${this.dataset.price} X`
         $productAdd.appendChild($productAddInfo);
-        
+
+
+        let $productUnitCounter = document.createElement('span');
+        $productUnitCounter.classList.add('counterSpan');
+        $productUnitCounter.textContent = 1;
+        $productUnitCounter.dataset.id = product.id;
+        $productAdd.appendChild($productUnitCounter);
+
+        } 
+
+
+        if (productList.includes(this.dataset.id)) {
+       
+        let $productUnitCounter = document.querySelector('.counterSpan');
+        $productUnitCounter.textContent = textContent + 1;
+
         }
-      
+
+        }
+    
+
+
+
+        /*} else if (unitCounter >= 1){
+
+                let $productUnitCounter = document.querySelector('.counterSpan');
+                $productUnitCounter.textContent = unitCounter++;
+
+        }*/
+
+
 
 
         
-
-        
-
-
-
 
 /* END EVENTO CLICK BOTON AGREGAR AL CARRITO*/
 

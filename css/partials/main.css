@@ -16,9 +16,10 @@ main {
     width: 80%;
     height: auto;
     border-radius: 2%;
-    margin: 0 2%;
+    margin: 80px 2%;
     padding: 30px 30px;
     position: absolute;
+    z-index: 90;
 
 
     .shopTitle {
@@ -90,6 +91,7 @@ main {
     display: block;
     justify-items: center;
     padding: 40px 15px;
+    
 
     .containerPlant {
 
