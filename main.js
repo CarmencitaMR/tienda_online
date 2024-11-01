@@ -1,5 +1,6 @@
 
 
+
 function init() {
 
         loadProducts();
@@ -31,6 +32,24 @@ function loadProducts() {
         $priceTotal.classList = 'priceTotal';
         $priceTotal.textContent = 'Total:' + ' ' + '€';
         $shopContainer.appendChild($priceTotal);
+
+        let $tableProductAdd = document.createElement('table');
+        $tableProductAdd.classList = ('tableProductAdd');
+        $shopTitle.after($tableProductAdd);
+        
+
+        /*let $headerProductAdd = document.createElement('tr');
+        $headerProductAdd.classList = ('headerProductAdd');
+        $headerProductAdd.innerHTML =`
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Nº</th>
+        <th>Total</th>
+        `;*/
+        
+        
+        /*$tableProductAdd.appendChild($headerProductAdd);*/
+
 
         let $priceTotalSpan = document.createElement('span');
         $priceTotalSpan.classList = 'priceTotalSpan';
@@ -70,6 +89,8 @@ function loadProducts() {
                 $containerPlant.classList = 'containerPlant';
                 $containerPlant.dataset.id = product.id;
                 $containerPlant.dataset.name = product.name;
+                $containerPlant.dataset.price = product.price;
+
 
                 let $figureImg = document.createElement('figure');
                 $figureImg.classList = 'figureImg';
@@ -156,18 +177,147 @@ function eventClickAddProductButton() {
 
         let $buttonPlant = document.querySelectorAll('.buttonPlant');
         for (let $button of $buttonPlant) {
-        $button.addEventListener('click', addProduct);
+        $button.addEventListener('click', addItemToShoppingList);
         }
 }
 
 
 /*EVENTO CLICK BOTON AGREGAR AL CARRITO*/
 
+let shoppingList = {};
 
 
-let productList = [];
+function addItemToShoppingList () {
+
+        let $containerPlant = this.closest('.containerPlant');
+        
+        let id = $containerPlant.dataset.id;
+        let name = $containerPlant.dataset.name;
+        let price = $containerPlant.dataset.price;
+
+        if(shoppingList.hasOwnProperty(id)){
+
+                shoppingList[id].count++;
+
+
+        }else {
+
+                shoppingList[id] = {
+
+                        id: parseInt(id),
+                        name: name,
+                        price: parseInt(price),
+                        count: 1
+                };
+
+        }
+
+        console.log(shoppingList);
+        refreshShoppingList();
+        
+
+
+}
+
+function refreshShoppingList() {
+
+        let $tableProductAdd = document.querySelector('.tableProductAdd');
+        $tableProductAdd.innerHTML = '';
+
+        let $headerProductAdd = document.createElement('tr');
+                $headerProductAdd.classList = ('headerProductAdd');
+                $headerProductAdd.innerHTML =`
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Nº</th>
+                <th>Total</th>
+                 `;
+
+                $tableProductAdd.appendChild($headerProductAdd);
+
+        let totalPrice = 0;
+        for (let productId in shoppingList){
+                let product = shoppingList[productId];
+                let $tr = document.createElement('tr');
+                $tr.dataset.id = product.id;
+                $tr.innerHTML = `
+                <td>${product.name}</td>
+                <td>${product.price}€</td>
+                <td>${product.count}</td>
+                <td>${product.count * product.price}</td>
+                <td>
+                <button class= "addProduct fa-solid fa-plus"></button>
+                <button class= "reduceProduct fa-solid fa-minus"></button>
+                </td>
+                `;
+                   $tableProductAdd.appendChild($tr);
+
+                   totalPrice += product.count * product.price;
+
+                   let $addProductButton = $tr.querySelector('.addProduct');
+                   $addProductButton.addEventListener('click', addProductButton);
+
+                   let $reduceProductButton = $tr.querySelector('.reduceProduct');
+                   $reduceProductButton.addEventListener('click', reduceProductButton);
+
+                
+        }
+
+        
+        let $priceTotalSpan = document.querySelector('.priceTotalSpan');
+        $priceTotalSpan.textContent = totalPrice;
+
+     
+
+}
+
+function addProductButton() {
+
+        let $row = this.closest('tr');
+        let productId = $row.dataset.id;
+        changeCountProduct(productId, 1);
+       
+   
+
+
+
+}
+
+
+function reduceProductButton () {
+
+        let $row = this.closest('tr');
+        let productId = $row.dataset.id;
+        changeCountProduct(productId, -1);
+
+
+
+}
+
+function changeCountProduct (productId, change) {
+
+        shoppingList[productId].count += change;
+        refreshShoppingList();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*let productList = [];
 let unitCounter = 1;
-let totalUnitCounter = 0;
+
 
 
 function addProduct() {
@@ -203,9 +353,9 @@ function addProduct() {
                 $productAdd.appendChild($productUnitCounter);
 
                 let $productTotalInfo = document.createElement('span');
-                $productTotalInfo.classList.add = ('productTotalInfo');
+                $productTotalInfo.classList = ('productTotalInfo');
                 $productTotalInfo.dataset.productId = this.dataset.id;
-                $productTotalInfo.textContent = 0;
+                $productTotalInfo.textContent = this.dataset.price;
                 $productAdd.appendChild($productTotalInfo);
 
 
@@ -243,51 +393,17 @@ function addProduct() {
                 unitCounter++;
                 $productUnitCounter.textContent = unitCounter;
 
-                let $productTotalInfo = document.querySelector('productTotalInfo.[data-product-id="' + this.dataset.id + '"]');
-                $productTotalInfo.textContent = unitCounter * this.dataset.price;
-
+                let $productTotalInfo = document.querySelector('.productTotalInfo[data-product-id="' + this.dataset.id + '"]');
+                $productTotalInfo.textContent = this.dataset.price * unitCounter;
 
 
         }
 
 
-
-
-/*EVENTO CLIK BOTON + */
-/*function eventClickAddProductButton() {
-
-        let $buttonSubtract = document.querySelector('.buttonSubtract');
-        $buttonSubtract.addEventListener('click', addButton);
-
-
-}
-
-
-function addButton() {
-
-        let $buttonAdd = document.querySelector('.buttonAdd[data-product-id="' + this.dataset.id + '"]');
-        unitCounter++;
-        $buttonAdd.textContent = unitCounter;
-
 }*/
 
 
-/* END EVENTO CLIK BOTON + */
-
-
-}
-
-
 /* END EVENTO CLICK BOTON AGREGAR AL CARRITO*/
-
-
-
-
-
-
-
-
-
 
 
 
