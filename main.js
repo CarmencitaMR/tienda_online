@@ -44,7 +44,7 @@ function loadProducts() {
 
 
         let $shopButtonDelete = document.createElement('button');
-        $shopButtonDelete.classList = 'shopButtonDelet';
+        $shopButtonDelete.classList = 'shopButtonDelete';
         $shopButtonDelete.textContent = 'Vaciar Carrito';
         $shopContainer.appendChild($shopButtonDelete);
 
@@ -166,7 +166,15 @@ function eventClickAddProductButton() {
         for (let $button of $buttonPlant) {
                 $button.addEventListener('click', addItemToShoppingList);
         }
+
+
+        let $shopButtonDelete = document.querySelector('.shopButtonDelete');
+        $shopButtonDelete.addEventListener('click', deleteShoppingList);
+
+       let $shopButtonProceed = document.querySelector('.shopButtonProceed');
+       $shopButtonProceed.addEventListener('click', proceedShoppingList);
 }
+
 
 
 /*EVENTO CLICK BOTON AGREGAR AL CARRITO*/
@@ -255,15 +263,15 @@ function refreshShoppingList() {
         }
 
 
-        let $priceTotalSpan = document.querySelector('.priceTotalSpan');
+        const $priceTotalSpan = document.querySelector('.priceTotalSpan');
         $priceTotalSpan.textContent = totalPrice;
 
 }
 
 function addProductButton() {
 
-        let $row = this.closest('tr');
-        let productId = $row.dataset.id;
+        const $row = this.closest('tr');
+        const productId = $row.dataset.id;
         changeCountProduct(productId, 1);
 
 }
@@ -271,8 +279,8 @@ function addProductButton() {
 
 function reduceProductButton() {
 
-        let $row = this.closest('tr');
-        let productId = $row.dataset.id;
+        const $row = this.closest('tr');
+        const productId = $row.dataset.id;
         changeCountProduct(productId, -1);
 
 }
@@ -284,9 +292,10 @@ function changeCountProduct(productId, change) {
                 return;
         }
 
-        shoppingList[productId].count += change;
+        const shoppingListProduct = shoppingList[productId];
+        shoppingListProduct.count += change;
         if (shoppingList[productId].count <= 0) {
-                delete shoppingList[productId];
+        delete shoppingList[productId];
         }
         
         refreshShoppingList();       
@@ -294,15 +303,46 @@ function changeCountProduct(productId, change) {
 }
 
 
-
 function deleteProduct(){
 
         alert('hola');
-        /*let $row = this.closest('tr');
+        let $row = this.closest('tr');
         let productId = $row.dataset.id;
-        delete shoppingList[productId];*/
-        
+        delete shoppingList[productId];
+        refreshShoppingList();       
 
+}
+
+
+
+
+function deleteShoppingList() {
+        shoppingList = {};
+        refreshShoppingList();
+
+}
+
+function proceedShoppingList() {
+
+
+       let totalPrice = 0;
+       for (const productId in shoppingList) {
+
+        const product = shoppingList[productId];
+        totalPrice += product.count * product.price;
+
+       }
+
+       if (totalPrice === 0){
+
+        alert('Vacio');
+
+       } else {
+
+       alert(`Compra exitosa ${totalPrice}€`);
+       deleteShoppingList();
+
+       }
 }
 
 
