@@ -36,20 +36,6 @@ function loadProducts() {
         let $tableProductAdd = document.createElement('table');
         $tableProductAdd.classList = ('tableProductAdd');
         $shopTitle.after($tableProductAdd);
-        
-
-        /*let $headerProductAdd = document.createElement('tr');
-        $headerProductAdd.classList = ('headerProductAdd');
-        $headerProductAdd.innerHTML =`
-        <th>Producto</th>
-        <th>Precio</th>
-        <th>Nº</th>
-        <th>Total</th>
-        `;*/
-        
-        
-        /*$tableProductAdd.appendChild($headerProductAdd);*/
-
 
         let $priceTotalSpan = document.createElement('span');
         $priceTotalSpan.classList = 'priceTotalSpan';
@@ -90,6 +76,7 @@ function loadProducts() {
                 $containerPlant.dataset.id = product.id;
                 $containerPlant.dataset.name = product.name;
                 $containerPlant.dataset.price = product.price;
+                $containerPlant.dataset.stock = product.stock;
 
 
                 let $figureImg = document.createElement('figure');
@@ -177,7 +164,7 @@ function eventClickAddProductButton() {
 
         let $buttonPlant = document.querySelectorAll('.buttonPlant');
         for (let $button of $buttonPlant) {
-        $button.addEventListener('click', addItemToShoppingList);
+                $button.addEventListener('click', addItemToShoppingList);
         }
 }
 
@@ -187,35 +174,30 @@ function eventClickAddProductButton() {
 let shoppingList = {};
 
 
-function addItemToShoppingList () {
+function addItemToShoppingList() {
 
         let $containerPlant = this.closest('.containerPlant');
-        
+
         let id = $containerPlant.dataset.id;
         let name = $containerPlant.dataset.name;
         let price = $containerPlant.dataset.price;
+        let stock = $containerPlant.dataset.stock;
 
-        if(shoppingList.hasOwnProperty(id)){
-
-                shoppingList[id].count++;
-
-
-        }else {
+        if (!shoppingList.hasOwnProperty(id)) {
 
                 shoppingList[id] = {
 
                         id: parseInt(id),
                         name: name,
                         price: parseInt(price),
-                        count: 1
+                        count: 0,
+                        stock: parseInt(stock)
                 };
 
-        }
+             
+        } 
 
-        console.log(shoppingList);
-        refreshShoppingList();
-        
-
+        changeCountProduct(id, 1);
 
 }
 
@@ -225,21 +207,23 @@ function refreshShoppingList() {
         $tableProductAdd.innerHTML = '';
 
         let $headerProductAdd = document.createElement('tr');
-                $headerProductAdd.classList = ('headerProductAdd');
-                $headerProductAdd.innerHTML =`
+        $headerProductAdd.classList = ('headerProductAdd');
+        $headerProductAdd.innerHTML = `
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Nº</th>
                 <th>Total</th>
                  `;
 
-                $tableProductAdd.appendChild($headerProductAdd);
+        $tableProductAdd.appendChild($headerProductAdd);
 
         let totalPrice = 0;
-        for (let productId in shoppingList){
+        for (let productId in shoppingList) {
                 let product = shoppingList[productId];
                 let $tr = document.createElement('tr');
+                $tr.classList=('trProduct');
                 $tr.dataset.id = product.id;
+                $tr.dataset.stock = product.stock;
                 $tr.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.price}€</td>
@@ -249,25 +233,30 @@ function refreshShoppingList() {
                 <button class= "addProduct fa-solid fa-plus"></button>
                 <button class= "reduceProduct fa-solid fa-minus"></button>
                 </td>
-                `;
-                   $tableProductAdd.appendChild($tr);
-
-                   totalPrice += product.count * product.price;
-
-                   let $addProductButton = $tr.querySelector('.addProduct');
-                   $addProductButton.addEventListener('click', addProductButton);
-
-                   let $reduceProductButton = $tr.querySelector('.reduceProduct');
-                   $reduceProductButton.addEventListener('click', reduceProductButton);
-
+                <td>
+                <button class= "delete fa-solid fa-trash"></button>
+                </td>
                 
+                `;
+                $tableProductAdd.appendChild($tr);
+
+                totalPrice += product.count * product.price;
+
+                let $addProductButton = $tr.querySelector('.addProduct');
+                $addProductButton.addEventListener('click', addProductButton);
+
+                let $reduceProductButton = $tr.querySelector('.reduceProduct');
+                $reduceProductButton.addEventListener('click', reduceProductButton);
+
+
+                let $deleteButton = document.querySelector('.delete');
+                $deleteButton.addEventListener('click', deleteProduct);                       
+
         }
 
-        
+
         let $priceTotalSpan = document.querySelector('.priceTotalSpan');
         $priceTotalSpan.textContent = totalPrice;
-
-     
 
 }
 
@@ -276,36 +265,45 @@ function addProductButton() {
         let $row = this.closest('tr');
         let productId = $row.dataset.id;
         changeCountProduct(productId, 1);
-       
-   
-
-
 
 }
 
 
-function reduceProductButton () {
+function reduceProductButton() {
 
         let $row = this.closest('tr');
         let productId = $row.dataset.id;
         changeCountProduct(productId, -1);
 
-
-
 }
 
-function changeCountProduct (productId, change) {
+function changeCountProduct(productId, change) {
+
+        if(shoppingList[productId].count + change > shoppingList[productId].stock){
+                alert('estas excediendo el stock');
+                return;
+        }
 
         shoppingList[productId].count += change;
-        refreshShoppingList();
+        if (shoppingList[productId].count <= 0) {
+                delete shoppingList[productId];
+        }
+        
+        refreshShoppingList();       
 
 }
 
 
 
+function deleteProduct(){
 
+        alert('hola');
+        /*let $row = this.closest('tr');
+        let productId = $row.dataset.id;
+        delete shoppingList[productId];*/
+        
 
-
+}
 
 
 
