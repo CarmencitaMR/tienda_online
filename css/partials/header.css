@@ -37,28 +37,45 @@
         
     }
 
-    .closeMenu{
-        display:none;
-        color: #ffdf00;
-        font-size: 1.5em;
-    
-    }
 
     .navList {
 
         display: none;
+        
+    }
+
+    .showMenu {
+
+        display: block; 
+        background-color: #00B52E;
+        position: absolute; 
+        width: 100%; 
+        margin: 40px 0;
+        height: 230px;
+        text-align: center;
+        left: 0;
+       
+
+        & li {
+
+             margin: 30px;
+        }
+
+    }
     
 
         .navLink {
 
             text-decoration: none;
-            color: #fafafa;
-            font-size: 0.4em;
+            color:#fafafa;
+            font-size: 1.2em;
+            
+          
         }
 
         .initLink {
 
-            color:#ffdf00;             
+            color: #ffdf00;          
         }
   
     }
@@ -69,7 +86,7 @@
         justify-items: center;
         color: #fafafa;
         font-size: 18px;
-        gap: 10px;
+        gap: 12px;
         cursor: pointer;
         
     }

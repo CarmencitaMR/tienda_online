@@ -34,10 +34,22 @@
 
             display: flex;
             gap: 15px;
+            background-color: #00B52E;
+            position:static;
+            height: 80px;
+            line-height: 80px;
+
+            & li {
+
+                margin: 0;
+           }
+   
+        
 
             .navLink {
 
-                font-size: 0.9em;              
+                font-size: 0.9em;  
+
             }
             
         }
@@ -63,7 +75,7 @@
     .shopContainer {
 
        
-        width: 30%;
+        width: 42%;
         right: 0;
         margin: 80px 0;
   
@@ -87,7 +99,7 @@
         }
     
     
-        .shopButtonDelet {
+        .shopButtonDelete {
     
             height: 50px;
             font-size: 1.1em;
@@ -105,6 +117,14 @@
         
     }
 
+
+
+.tableProductAdd {
+   
+     & th:nth-child(1){
+        width: 40%;
+     }
+}
     /* CONTENEDOR - SECCION PRODUCTOS*/
 
 

@@ -4,6 +4,7 @@
 function init() {
 
         loadProducts();
+        eventClickHamburguer();
         eventClickShopCart();
         eventClickAddProductButton();
 
@@ -30,16 +31,16 @@ function loadProducts() {
 
         let $priceTotal = document.createElement('p');
         $priceTotal.classList = 'priceTotal';
-        $priceTotal.textContent = 'Total:' + ' ' + '€';
+        $priceTotal.textContent = `Total: `;
         $shopContainer.appendChild($priceTotal);
 
         let $tableProductAdd = document.createElement('table');
-        $tableProductAdd.classList = ('tableProductAdd');
+        $tableProductAdd.classList = 'tableProductAdd';
         $shopTitle.after($tableProductAdd);
 
         let $priceTotalSpan = document.createElement('span');
         $priceTotalSpan.classList = 'priceTotalSpan';
-        $priceTotalSpan.textContent = '0';
+        $priceTotalSpan.textContent = '';
         $shopContainer.appendChild($priceTotalSpan);
 
 
@@ -105,7 +106,7 @@ function loadProducts() {
 
                 let $priceUnitPlant = document.createElement('p');
                 $priceUnitPlant.classList = 'priceUnitPlant';
-                $priceUnitPlant.textContent = ('Precio:' + " " + '€' + product.price);
+                $priceUnitPlant.textContent = `Precio: ${product.price}€`;
                 $containerPlant.appendChild($priceUnitPlant);
 
 
@@ -125,6 +126,38 @@ function loadProducts() {
 }
 
 
+
+
+
+
+let clickHamburguer = 1;
+
+function eventClickHamburguer() {
+
+        let $hamburguer = document.querySelector('.hamburguer');
+        $hamburguer.addEventListener('click', showMenu);
+}
+
+
+let clickMenu = 1;
+function showMenu() {
+
+
+        if (clickMenu === 1) {
+                let navList = document.querySelector('.navList');
+                navList.classList.add('showMenu');
+                clickMenu += 1;
+
+        } else {
+                let navList = document.querySelector('.navList');
+                navList.classList.remove('showMenu');
+                clickMenu = 1;
+        }
+
+}
+
+
+
 /*EVENTO CLICK CARRITO COMPRA*/
 
 
@@ -133,7 +166,6 @@ let clickCartIcon = 1;
 function eventClickShopCart() {
 
         let $shopCartIcon = document.querySelector('.yellow');
-        console.log($shopCartIcon);
         $shopCartIcon.addEventListener('click', showCart);
 }
 
@@ -164,9 +196,8 @@ function eventClickAddProductButton() {
 
         let $buttonPlant = document.querySelectorAll('.buttonPlant');
         for (let $button of $buttonPlant) {
-                $button.addEventListener('click', addItemToShoppingList);
+        $button.addEventListener('click', addItemToShoppingList);
         }
-
 
         let $shopButtonDelete = document.querySelector('.shopButtonDelete');
         $shopButtonDelete.addEventListener('click', deleteShoppingList);
@@ -215,12 +246,14 @@ function refreshShoppingList() {
         $tableProductAdd.innerHTML = '';
 
         let $headerProductAdd = document.createElement('tr');
-        $headerProductAdd.classList = ('headerProductAdd');
+        $headerProductAdd.classList = 'headerProductAdd';
         $headerProductAdd.innerHTML = `
                 <th>Producto</th>
-                <th>Precio</th>
+                <th>€</th>
                 <th>Nº</th>
                 <th>Total</th>
+                <th></th>
+                <th></th>
                  `;
 
         $tableProductAdd.appendChild($headerProductAdd);
@@ -229,14 +262,14 @@ function refreshShoppingList() {
         for (let productId in shoppingList) {
                 let product = shoppingList[productId];
                 let $tr = document.createElement('tr');
-                $tr.classList=('trProduct');
+                $tr.classList= 'trProduct';
                 $tr.dataset.id = product.id;
                 $tr.dataset.stock = product.stock;
                 $tr.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.price}€</td>
                 <td>${product.count}</td>
-                <td>${product.count * product.price}</td>
+                <td>${product.count * product.price}€ </td>
                 <td>
                 <button class= "addProduct fa-solid fa-plus"></button>
                 <button class= "reduceProduct fa-solid fa-minus"></button>
@@ -264,7 +297,7 @@ function refreshShoppingList() {
 
 
         const $priceTotalSpan = document.querySelector('.priceTotalSpan');
-        $priceTotalSpan.textContent = totalPrice;
+        $priceTotalSpan.textContent = totalPrice + '€';
 
 }
 
@@ -304,13 +337,10 @@ function changeCountProduct(productId, change) {
 
 
 function deleteProduct(){
-
-        alert('hola');
         let $row = this.closest('tr');
         let productId = $row.dataset.id;
         delete shoppingList[productId];
-        refreshShoppingList();       
-
+        refreshShoppingList();         
 }
 
 
@@ -335,11 +365,38 @@ function proceedShoppingList() {
 
        if (totalPrice === 0){
 
-        alert('Vacio');
+        swal({
+
+                title: '¡Carrito Vacío!',
+                text: 'Por favor seleccione los productos deseados y proceda con la compra.',
+                icon: 'warning',
+                customClass: {
+
+                        popup: 'alertPopup', // Clase para el popup
+                        title: 'alertTitle', // Clase para el título
+                        content: 'alertContent' // Clase para el contenido
+                }
+                
+        });
+
+       
 
        } else {
 
-       alert(`Compra exitosa ${totalPrice}€`);
+       
+        swal({
+
+                title: 'Compra realizada con éxito',
+                text:  'Si desea consejos para cuidar sus plantas, no olvide visitar nuestro blog.',
+                icon: 'success',
+                customClass: {
+
+                        popup: 'alertPopup', // Clase para el popup
+                        title: 'alertTitle', // Clase para el título
+                        content: 'alertContent'
+
+                }
+        });
        deleteShoppingList();
 
        }

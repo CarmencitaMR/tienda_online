@@ -20,20 +20,20 @@ main {
     padding: 30px 30px;
     position: absolute;
     z-index: 90;
+    
 
 
     .shopTitle {
 
         font-size: 1.1em;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
 
     }
 
     .priceTotal {
         font-size: 1.1em;
         font-weight: bold;
-        margin: 20px 0;
         display: inline;
 
     }
@@ -41,12 +41,11 @@ main {
     .priceTotalSpan {
         display: inline;
         font-size: 1.1em;
-        font-weight: bold;
-
+        font-weight: bold;    
     }
 
 
-    .shopButtonDelet {
+    .shopButtonDelete {
 
         background-color: #00B52E;
         border: none;
@@ -57,6 +56,7 @@ main {
         padding: auto;
         border-radius: 7px;
         margin: 20px 0;
+        cursor: pointer;
 
     }
 
@@ -71,6 +71,7 @@ main {
         font-size: 1em;
         padding: auto;
         border-radius: 7px;
+        cursor: pointer;
 
     }
 
@@ -91,6 +92,95 @@ main {
     display: flex;
     gap: 5px;
 }
+
+
+.tableProductAdd {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    color:#333333;
+    margin-bottom: 30px;
+   
+
+    & th {
+        font-weight: 450; 
+        font-size: 17px;  
+        padding: 10px 0;
+        text-align: start;
+        border-bottom: 1px solid #00B52E;
+     }
+         
+     & th:nth-child(1){
+        width: 30%;
+     }
+
+     & th:nth-child(2){
+        text-align: center;
+     }
+
+     & th:nth-child(3){
+        text-align: center;
+     }
+
+     & th:nth-child(4){
+        text-align: center;
+     }
+
+     & th:nth-child(5){
+        text-align: center;
+     }
+
+     & th:nth-child(6){
+        text-align: center;
+     }
+
+    & td {
+        padding: 15px 0;  
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    & td:nth-child(1) {
+        padding: 15px 0;  
+        vertical-align: middle;
+        text-align: start;
+    }
+
+   
+
+    .addProduct {
+        background-color: #ffffff;
+        color: #00B52E;
+        font-weight: bolder;
+        border-radius: 5px;
+        border: 1px solid #00B52E;
+        padding: 3px;
+        cursor: pointer;
+    }
+
+    .reduceProduct {
+        background-color: #ffffff;
+        border-radius: 5px;
+        border: 1px solid #00B52E;
+        color: #00B52E;
+        padding: 3px;
+        cursor: pointer;
+    }
+
+    .delete {
+        background-color: #ffffff;
+        color:#333333;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+    }
+ 
+ 
+}
+
+
+
+ 
 
 /*CONTENEDOR - SECCIÓN PRODUCTOS*/
 
@@ -174,7 +264,20 @@ main {
 
     }
 
+    
 
 }
+
+
+.alertPopup {
+
+    background-color: yellow;
+}
+
+.alertContent {
+
+    color:#00B52E;
+}
+
 
 /*END MAIN*/
