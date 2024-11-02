@@ -28,7 +28,6 @@ function loadProducts() {
         $shopTitle.textContent = 'Carrito de Compras';
         $shopContainer.appendChild($shopTitle);
 
-
         let $priceTotal = document.createElement('p');
         $priceTotal.classList = 'priceTotal';
         $priceTotal.textContent = `Total: `;
@@ -128,6 +127,7 @@ function loadProducts() {
 
 
 
+/*EVENTO CLICK MENU HAMBURGUESA*/
 
 
 let clickHamburguer = 1;
@@ -156,6 +156,10 @@ function showMenu() {
 
 }
 
+/*EVENTO CLICK MENU HAMBURGUESA*/
+
+
+
 
 
 /*EVENTO CLICK CARRITO COMPRA*/
@@ -168,8 +172,6 @@ function eventClickShopCart() {
         let $shopCartIcon = document.querySelector('.yellow');
         $shopCartIcon.addEventListener('click', showCart);
 }
-
-
 
 function showCart() {
 
@@ -275,7 +277,7 @@ function refreshShoppingList() {
                 <button class= "reduceProduct fa-solid fa-minus"></button>
                 </td>
                 <td>
-                <button class= "delete fa-solid fa-trash"></button>
+                <button data-id = ${product.id} class= "delete fa-solid fa-trash"></button>
                 </td>
                 
                 `;
@@ -289,9 +291,10 @@ function refreshShoppingList() {
                 let $reduceProductButton = $tr.querySelector('.reduceProduct');
                 $reduceProductButton.addEventListener('click', reduceProductButton);
 
-
-                let $deleteButton = document.querySelector('.delete');
-                $deleteButton.addEventListener('click', deleteProduct);                       
+                let $deleteButton = document.querySelectorAll('.delete');
+                for (let $delButton of $deleteButton){
+                $delButton.addEventListener('click', deleteProduct);        
+                }              
 
         }
 
@@ -337,11 +340,25 @@ function changeCountProduct(productId, change) {
 
 
 function deleteProduct(){
-        let $row = this.closest('tr');
+      
+        /*alert('hola');
+        $row = this.closest('tr');
+        if (this.dataset.id === $row.dataset.id){
+        this.closest('.trProduct').remove();
+        }*/
+
+
+
+
+        $row = this.closest('tr');
         let productId = $row.dataset.id;
         delete shoppingList[productId];
-        refreshShoppingList();         
+        refreshShoppingList();
+       
+
 }
+
+
 
 
 
