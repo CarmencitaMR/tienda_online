@@ -1,169 +1,116 @@
 @media(min-width: 768px) {
 
-
     /*HEADER*/
-
     .headersection {
-
         padding: 0 15px;
 
-        .mainTitle {
+        .mainTitle { /*titulo situado a la izquierda no visible en movil*/
             display: flex;
             color: #fafafa;
             font-weight: bolder;
             font-size: 30px;
-
 
             .oColor {
                 color: #ffdf00;
             }
         }
 
-        .mobilTitle {
-
+        .mobilTitle {/*titulo centrado para la version movil*/
             display: none;
         }
 
         .iconHamburger {
-
             display: none;
-
         }
 
-        .navList {
-
+        .navList {/*ul con los enlaces de navegacion*/
             display: flex;
             gap: 15px;
             background-color: #00B52E;
-            position:static;
+            position: static;
             height: 75px;
             line-height: 80px;
             border-top: none;
 
             & li {
-
                 margin: 0;
-           }
-   
-        
+            }
 
             .navLink {
-
-                font-size: 0.9em;  
-
+                font-size: 0.9em;
             }
-            
         }
 
-        
         .headerIcons {
-
             font-size: 20px;
             gap: 15px;
         }
-
     }
-
     /*END HEADER*/
 
-
-
     /*MAIN*/
-
-
-    /*CONTENDOR CARRITO*/
-
-    .shopContainer {
-
-       
+   /*CONTENEDOR CARRITO DE LA COMPRA*/
+    .shopContainer {/*div que sirve de contendor del carrito de la compra oculto hasta que se la asigna la clase *showCart*/ 
         width: 42%;
         right: 0;
         margin: 80px 0;
-  
-    
-        .shopTitle{
-    
+
+        .shopTitle {
             font-size: 1.2em;
-           
         }
-    
-        .priceTotal{
+
+        .priceTotal {/*texto*/
             font-size: 1.2em;
-            
-    
         }
-    
-        .priceTotalSpan{
-           
+
+        .priceTotalSpan {/*cantidad*/
             font-size: 1.2em;
-           
         }
-    
-    
+
         .shopButtonDelete {
-    
             height: 50px;
             font-size: 1.1em;
-        
         }
-    
-    
+
         .shopButtonProceed {
-    
             height: 50px;
             font-size: 1.1em;
-           
         }
-    
-        
     }
 
+    .tableProductAdd {/*tabla dinamica que contiene la info de cada producto que se añade al shoppingList*/
+        & th:nth-child(1) {
+            width: 40%;
+        }
+    }
+    /*END CONTENEDOR CARRITO DE LA COMPRA*/
 
-
-.tableProductAdd {
-   
-     & th:nth-child(1){
-        width: 40%;
-     }
-}
     /* CONTENEDOR - SECCION PRODUCTOS*/
-
-
-    .mainSection {
-
+    .mainSection {/*contenedor-seccion donde van los productos*/
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 50% 50%; /*2 columnas*/
         padding: 140px 7%;
 
-        .containerPlant{
-        
+        .containerPlant {
 
             .descriptionPlant {
-    
                 min-height: 90px;
             }
-
         }
     }
+    /* END CONTENEDOR - SECCION PRODUCTOS*/
+    /*END MAIN*/
 
-
-/*END MAIN*/
-
-/*FOOTER*/
-
+    /*FOOTER*/
     footer {
-
         height: 80px;
         background-color: #00B52E;
         color: #fafafa;
         text-align: center;
         line-height: 80px;
         font-size: 0.9em;
-   
-        }
-
+    }
 }
-
 /*END FOOTER*/
 
 
@@ -177,91 +124,55 @@
 
 
     /*HEADER*/
-
     .headersection {
 
-
-
-        .mainTitle {
-
+        .mainTitle {/*titulo situado a la izquierda no visible en movil*/
             display: flex;
             font-size: 35px;
-
         }
 
-
-        .mobilTitle {
-
+        .mobilTitle {/*titulo centrado para la version movil*/
             display: none;
         }
 
-
-        .navList {
-
-
+        .navList {/*ul con los enlaces de navegacion*/
             gap: 40px;
 
             .navLink {
-
-
                 font-size: 1.05em;
-
             }
         }
 
         .headerIcons {
-
             font-size: 25px;
             gap: 30px;
         }
-
-
     }
+    /*END HEADER*/
 
-/*END HEADER*/
-
-
-
-/*MAIN*/
-
-     /*CONTENEDOR - SECCIÓN PRODUCTOS*/
-
-
-     .mainSection {
-
+    /*MAIN*/
+    /*CONTENEDOR - SECCIÓN PRODUCTOS*/
+    .mainSection {/*contenedor-seccion donde van los productos*/
         display: grid;
-        grid-template-columns: 33.33% 33.33% 33.33%;
-       
+        grid-template-columns: 33.33% 33.33% 33.33%;/* 3 columnas*/
 
-        .containerPlant{
+        .containerPlant {
 
-
-            .namePlant{
-
+            .namePlant {
                 min-height: 20px;
             }
-            
-        
 
             .descriptionPlant {
-    
                 min-height: 70px;
             }
-
         }
-
     }
+    /*END CONTENEDOR - SECCIÓN PRODUCTOS*/
+    /*END MAIN*/
 
-
-/*END MAIN*/
-
-
-/*FOOTER*/
-
+    /*FOOTER*/
     footer {
-
         font-size: 1.05em;
     }
+    /*END FOOTER*/
 }
-
-/*END FOOTER*/

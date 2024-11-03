@@ -1,7 +1,6 @@
+
 /*HEADER*/
-
 .headersection {
-
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -10,93 +9,69 @@
     height: 80px;
     position: fixed;
     z-index: 101;
- 
 
-   
-    .mainTitle {
-        
+    .mainTitle { /*titulo situado a la izquierda no visible para movil*/
         display: none;
     }
 
-    .mobilTitle {
+    .mobilTitle { /*titulo centrado para la version movil*/
         color: #fafafa;
         font-weight: bolder;
         font-size: 23px;
 
         .oColor {
-           color: #ffdf00;
+            color: #ffdf00;
         }
     }
 
-
     .iconHamburger {
-
         display: flex;
         color: #fafafa;
         font-size: 35px;
-        
     }
 
-
-    .navList {
-
+    .navList { /*ul con los enlaces de navegacion no visible en movil con display flex en mediaqueries*/
         display: none;
-        
     }
 
-    .showMenu {
-
-        display: block; 
+    .showMenu { /*ul con los enlaces de navegacion visible en movil*/
+        display: block;
         background-color: #00B52E;
-        position: absolute; 
-        width: 100%; 
+        position: absolute;
+        width: 100%;
         margin: 40px 0;
         height: 230px;
         text-align: center;
         left: 0;
         border-top: 1px solid #ffdf00;
-       
 
         & li {
-
-             margin: 30px;
+            margin: 30px;
         }
-
-    }
-    
-
-        .navLink {
-
-            text-decoration: none;
-            color:#fafafa;
-            font-size: 1.2em;
-            
-          
-        }
-
-        .initLink {
-
-            color: #ffdf00;          
-        }
-  
     }
 
-    .headerIcons {
-
-        display: flex;
-        justify-items: center;
+    .navLink {
+        text-decoration: none;
         color: #fafafa;
-        font-size: 18px;
-        gap: 12px;
-        cursor: pointer;
-        
+        font-size: 1.2em;
     }
 
-    .yellow {
-
+    .initLink {
         color: #ffdf00;
-          
     }
 
+}
 
+.headerIcons {
+    display: flex;
+    justify-items: center;
+    color: #fafafa;
+    font-size: 18px;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.yellow {/*icono carrito de la compra*/
+    color: #ffdf00;
+}
 /*END HEADER*/

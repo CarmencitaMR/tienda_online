@@ -1,16 +1,11 @@
+
 /*MAIN*/
-
-
 main {
-
     background-color: #f1fcf1;
-
 }
 
 /*CONTENEDOR CARRITO DE LA COMPRA*/
-
-.shopContainer {
-
+.shopContainer {/*div que sirve de contendor del carrito de la compra oculto hasta que se la asigna la clase *showCart*/ 
     display: none;
     background-color: #ffffff;
     width: 80%;
@@ -21,32 +16,25 @@ main {
     position: absolute;
     z-index: 90;
     
-
-
     .shopTitle {
-
         font-size: 1.1em;
         font-weight: bold;
         margin-bottom: 30px;
-
     }
 
-    .priceTotal {
+    .priceTotal {/*texto*/
         font-size: 1.1em;
         font-weight: bold;
         display: inline;
-
     }
 
-    .priceTotalSpan {
+    .priceTotalSpan {/*cantidad*/
         display: inline;
         font-size: 1.1em;
         font-weight: bold;    
     }
 
-
     .shopButtonDelete {
-
         background-color: #00B52E;
         border: none;
         width: 100%;
@@ -57,12 +45,9 @@ main {
         border-radius: 7px;
         margin: 40px 0 20px 0;
         cursor: pointer;
-
     }
 
-
     .shopButtonProceed {
-
         background-color: #00B52E;
         border: none;
         width: 100%;
@@ -72,37 +57,21 @@ main {
         padding: auto;
         border-radius: 7px;
         cursor: pointer;
-
     }
-
 }
 
-
-.showCart {
-
+.showCart {/*clase asignada al contenedor de carrito para tener display block y ser visible al pinchar en el icono*/
     display: block;
-
 }
 
-
-
-
-.productAdd {
-
-    display: flex;
-    gap: 5px;
-}
-
-
-.tableProductAdd {
+.tableProductAdd {/*tabla dinamica que contiene la info de cada producto que se añade al shoppingList*/
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
     color:#333333;
     margin-bottom: 30px;
    
-
-    & th {
+    & th {/*encabezados de la tabla*/
         font-weight: 450; 
         font-size: 17px;  
         padding: 10px 0;
@@ -146,9 +115,7 @@ main {
         text-align: start;
     }
 
-   
-
-    .addProduct {
+    .addProduct {/*boton + */
         background-color: #ffffff;
         color: #00B52E;
         font-weight: bolder;
@@ -158,7 +125,7 @@ main {
         cursor: pointer;
     }
 
-    .reduceProduct {
+    .reduceProduct {/*boton - */
         background-color: #ffffff;
         border-radius: 5px;
         border: 1px solid #00B52E;
@@ -167,33 +134,24 @@ main {
         cursor: pointer;
     }
 
-    .delete {
+    .delete {/*boton basura*/
         background-color: #ffffff;
         color:#333333;
         font-size: 17px;
         border: none;
         cursor: pointer;
     }
- 
- 
 }
+/*END CONTENEDOR CARRITO DE LA COMPRA*/
 
 
-
- 
-
-/*CONTENEDOR - SECCIÓN PRODUCTOS*/
-
-
-.mainSection {
-
+/*CONTENEDOR SECCIÓN PRODUCTOS*/
+.mainSection {/*contenedor-seccion donde van los productos*/
     display: block;
     justify-items: center;
     padding: 100px 15px;
     
-
-    .containerPlant {
-
+    .containerPlant {/*pildora*/
         background-color: #ffffff;
         text-align: center;
         border-radius: 2%;
@@ -201,24 +159,18 @@ main {
         padding: 20px 20px;
         transition: all 0.500s ease;
 
-
-        .figureImg {
-
+        .figureImg {/*foto de la planta*/
             width: 33, 33%;
             height: auto;
             border-radius: 2%;
 
-
             .imagePlant {
-
                 width: 100%;
                 border-radius: 2%;
-
             }
         }
 
         .namePlant {
-
             color: #333333;
             font-size: 1.2em;
             font-weight: bold;
@@ -227,7 +179,6 @@ main {
         }
 
         .descriptionPlant {
-
             color: #333333;
             margin: 20px 0;
             line-height: 23px;
@@ -235,15 +186,11 @@ main {
         }
 
         .priceUnitPlant {
-
             color: #333333;
             margin: 20px 0;
-
         }
 
-
-        .buttonPlant {
-
+        .buttonPlant {/*boton añadir al carrito*/
             background-color: #00B52E;
             border: none;
             width: 100%;
@@ -253,41 +200,25 @@ main {
             padding: auto;
             border-radius: 7px;
             cursor: pointer;
-
         }
-
     }
 
-    .containerPlant:hover {
-
+    .containerPlant:hover {/*efecto hover de agrandar pildora con escala*/
         transform: scale(105%);
-
     }
-
-    
-
 }
 
-
-
-    .alertPopup {
-
+    .alertPopup {/*estilos de las alets*/
         background-color: #fafafa;
         border: 3px solid #00B52E;
         padding: 0 20px;
-        font-family: "Poppins";
-       
+        font-family: "Poppins";  
     }
     
-    .buttonAlert {
+    .buttonAlert {/*estilos de las alets*/
         background-color: #00B52E;
         color: #fafafa;
         font-family: "Poppins";
     }
-
-    
-
-
-
-
+/*END CONTENEDOR SECCIÓN PRODUCTOS*/
 /*END MAIN*/
