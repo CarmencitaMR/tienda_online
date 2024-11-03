@@ -54,6 +54,7 @@
         height: 230px;
         text-align: center;
         left: 0;
+        border-top: 1px solid #ffdf00;
        
 
         & li {
@@ -96,6 +97,6 @@
         color: #ffdf00;
           
     }
-}
+
 
 /*END HEADER*/

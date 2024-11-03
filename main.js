@@ -1,24 +1,17 @@
 
-
-
-function init() {
+function init() { //funcion que agrupa el resto de funciones, facilita la lectura del codigo.
 
         loadProducts();
         eventClickHamburguer();
         eventClickShopCart();
         eventClickAddProductButton();
-
 }
-
-
 
 function loadProducts() {
 
-        // Entro en el main que es donde estará contenido el cuadro de productos
+        let $main = document.querySelector('main'); // Entro en el main que es donde estara contenido el cuadro de productos y el contenedor del carrito de compras
 
-        let $main = document.querySelector('main');
-
-        // Creo el contenedor Div para el carrito de compras que incluye un titulo, total y dos botones.
+        /*Creo CONTENEDOR DEL CARRITO DE COMPRAS*/
 
         let $shopContainer = document.createElement('div');
         $shopContainer.classList = 'shopContainer';
@@ -42,34 +35,31 @@ function loadProducts() {
         $priceTotalSpan.textContent = '';
         $shopContainer.appendChild($priceTotalSpan);
 
-
         let $shopButtonDelete = document.createElement('button');
         $shopButtonDelete.classList = 'shopButtonDelete';
         $shopButtonDelete.textContent = 'Vaciar Carrito';
         $shopContainer.appendChild($shopButtonDelete);
-
 
         let $shopButtonProceed = document.createElement('button');
         $shopButtonProceed.classList = 'shopButtonProceed';
         $shopButtonProceed.textContent = 'Proceder a Comprar';
         $shopContainer.appendChild($shopButtonProceed);
 
-
         $main.appendChild($shopContainer);
 
+        /*END CONTENEDOR DEL CARRITO DE COMPRAS*/
 
-        // Creo una sección donde incluyo el cuadro de productos y lo incluyo en el main
+        /*SECCIÓN PRODUCTOS*/
+        //Creo una sección donde incluyo el cuadro de productos y lo incluyo en el main
 
         let $mainSection = document.createElement('section');
         $mainSection.classList = 'mainSection'
         $main.appendChild($mainSection);
         console.log($mainSection);
 
-
         /*Recorro el array de productos para crear por cada producto un contendor div que contendrá a su vez una imagen (dentro de un figure, un titulo con el nombre del producto, un párrafo con la descripción, un párrafo para incluir el precio del producto y un boton para poder agregar el producto al carro)*/
 
         for (let product of products) {
-
 
                 let $containerPlant = document.createElement('div');
                 $containerPlant.classList = 'containerPlant';
@@ -78,11 +68,9 @@ function loadProducts() {
                 $containerPlant.dataset.price = product.price;
                 $containerPlant.dataset.stock = product.stock;
 
-
                 let $figureImg = document.createElement('figure');
                 $figureImg.classList = 'figureImg';
                 $containerPlant.appendChild($figureImg);
-
 
                 let $imagePlant = document.createElement('img');
                 $imagePlant.classList = 'imagePlant';
@@ -90,24 +78,20 @@ function loadProducts() {
                 $imagePlant.alt = product.name;
                 $figureImg.appendChild($imagePlant);
 
-
                 let $namePlant = document.createElement('h3');
                 $namePlant.classList = 'namePlant';
                 $namePlant.textContent = product.name;
                 $containerPlant.appendChild($namePlant);
-
 
                 let $descriptionPlant = document.createElement('p');
                 $descriptionPlant.classList = 'descriptionPlant';
                 $descriptionPlant.textContent = product.description;
                 $containerPlant.appendChild($descriptionPlant);
 
-
                 let $priceUnitPlant = document.createElement('p');
                 $priceUnitPlant.classList = 'priceUnitPlant';
                 $priceUnitPlant.textContent = `Precio: ${product.price}€`;
                 $containerPlant.appendChild($priceUnitPlant);
-
 
                 let $buttonPlant = document.createElement('button');
                 $buttonPlant.classList = 'buttonPlant';
@@ -119,103 +103,76 @@ function loadProducts() {
                 $containerPlant.appendChild($buttonPlant);
 
                 $mainSection.appendChild($containerPlant);
-
         }
-
 }
 
-
-
-
 /*EVENTO CLICK MENU HAMBURGUESA*/
+let clickMenu = 1;
 
-
-let clickHamburguer = 1;
-
-function eventClickHamburguer() {
-
+function eventClickHamburguer() { //busco el icono y le asigno el evento click
         let $hamburguer = document.querySelector('.hamburguer');
         $hamburguer.addEventListener('click', showMenu);
 }
 
-
-let clickMenu = 1;
-function showMenu() {
-
+function showMenu() { //1º click asigno la clase showMenu que tiene un display block
 
         if (clickMenu === 1) {
                 let navList = document.querySelector('.navList');
                 navList.classList.add('showMenu');
                 clickMenu += 1;
 
-        } else {
+        } else { //2º click quito la clase showMenu y asi se queda solo con la clase navList display: none
                 let navList = document.querySelector('.navList');
                 navList.classList.remove('showMenu');
                 clickMenu = 1;
         }
-
 }
-
-/*EVENTO CLICK MENU HAMBURGUESA*/
-
-
-
-
+/*END EVENTO CLICK MENU HAMBURGUESA*/
 
 /*EVENTO CLICK CARRITO COMPRA*/
-
-
 let clickCartIcon = 1;
 
-function eventClickShopCart() {
+function eventClickShopCart() { //busco el icono y le asigno el evento click
 
         let $shopCartIcon = document.querySelector('.yellow');
         $shopCartIcon.addEventListener('click', showCart);
 }
 
-function showCart() {
-
+function showCart() { //1º click asigno la clase showCart que tiene un display block
 
         if (clickCartIcon === 1) {
                 let $shopContainer = document.querySelector('.shopContainer');
                 $shopContainer.classList.add('showCart');
                 clickCartIcon += 1;
 
-        } else {
+        } else { //2º click quito la clase show Cart y asi se queda solo con la clase shopContainer display: none
                 let $shopContainer = document.querySelector('.shopContainer');
                 $shopContainer.classList.remove('showCart');
                 clickCartIcon = 1;
         }
-
 }
-
 /*END EVENTO CLICK CARRITO COMPRA*/
 
-
-
-
+/*EVENTO CLICK AL BOTON AGREGAR AL CARRITO / VACIAR CARRITO / PROCEDER A LA COMPRA*/
 function eventClickAddProductButton() {
 
-        let $buttonPlant = document.querySelectorAll('.buttonPlant');
+        //evento click botones de agregar al carrito
+        let $buttonPlant = document.querySelectorAll('.buttonPlant'); 
         for (let $button of $buttonPlant) {
         $button.addEventListener('click', addItemToShoppingList);
         }
-
-        let $shopButtonDelete = document.querySelector('.shopButtonDelete');
+        //evento click boton vaciar carrito
+        let $shopButtonDelete = document.querySelector('.shopButtonDelete'); 
         $shopButtonDelete.addEventListener('click', deleteShoppingList);
-
-       let $shopButtonProceed = document.querySelector('.shopButtonProceed');
-       $shopButtonProceed.addEventListener('click', proceedShoppingList);
+        //evento click boton proceder a la compra
+        let $shopButtonProceed = document.querySelector('.shopButtonProceed');
+        $shopButtonProceed.addEventListener('click', proceedShoppingList);
 }
 
+/* FUNCIONALIDAD CARRTITO DE LA COMPRA*/
+let shoppingList = {}; //creo un objeto donde se pintaran los productos que añada al carrito
 
-
-/*EVENTO CLICK BOTON AGREGAR AL CARRITO*/
-
-let shoppingList = {};
-
-
-function addItemToShoppingList() {
+function addItemToShoppingList() { 
 
         let $containerPlant = this.closest('.containerPlant');
 
@@ -224,30 +181,26 @@ function addItemToShoppingList() {
         let price = $containerPlant.dataset.price;
         let stock = $containerPlant.dataset.stock;
 
-        if (!shoppingList.hasOwnProperty(id)) {
+        if (!shoppingList.hasOwnProperty(id)) {//al hacer click en el boton añadir al carrito si la id del producto no está ya en el objeto shoppingList lo añade.
 
-                shoppingList[id] = {
-
+                shoppingList[id] = {//el producto tiene el id, name, price, stock del producto de la pildora que corresponda. Además tiene un contador para poder añadir 1 si no estuviera ya en la shoppinList y para poder añadir más o restar más unidades.
                         id: parseInt(id),
                         name: name,
                         price: parseInt(price),
                         count: 0,
                         stock: parseInt(stock)
                 };
+        }
 
-             
-        } 
-
-        changeCountProduct(id, 1);
-
+        changeCountProduct(id, 1); //le paso el parametro 1 para que añada 1 vez el producto correspondiente que no está aún en la shoppingList
 }
 
-function refreshShoppingList() {
+function refreshShoppingList() { //actualizo el carrito de compras
 
         let $tableProductAdd = document.querySelector('.tableProductAdd');
-        $tableProductAdd.innerHTML = '';
+        $tableProductAdd.innerHTML = ''; //1º vacío lo que hubiera en el contendor(tabla).
 
-        let $headerProductAdd = document.createElement('tr');
+        let $headerProductAdd = document.createElement('tr'); //añado la cabecera de tabla
         $headerProductAdd.classList = 'headerProductAdd';
         $headerProductAdd.innerHTML = `
                 <th>Producto</th>
@@ -261,17 +214,17 @@ function refreshShoppingList() {
         $tableProductAdd.appendChild($headerProductAdd);
 
         let totalPrice = 0;
-        for (let productId in shoppingList) {
+        for (let productId in shoppingList) { //recorro todos los productos de la shoppingList
                 let product = shoppingList[productId];
-                let $tr = document.createElement('tr');
-                $tr.classList= 'trProduct';
+                let $tr = document.createElement('tr'); //añado el cuerpo de la tabla con el contenido correspondiente a cada producto y los botones que quiero tenga para asignarles funcionalidad.
+                $tr.classList = 'trProduct';
                 $tr.dataset.id = product.id;
                 $tr.dataset.stock = product.stock;
                 $tr.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.price}€</td>
                 <td>${product.count}</td>
-                <td>${product.count * product.price}€ </td>
+                <td>${product.count * product.price}€ </td> 
                 <td>
                 <button class= "addProduct fa-solid fa-plus"></button>
                 <button class= "reduceProduct fa-solid fa-minus"></button>
@@ -283,241 +236,114 @@ function refreshShoppingList() {
                 `;
                 $tableProductAdd.appendChild($tr);
 
-                totalPrice += product.count * product.price;
+                totalPrice += product.count * product.price; //calculo el precio total de la compra
 
+                //evento click botton + añadir una unidad adicional
                 let $addProductButton = $tr.querySelector('.addProduct');
                 $addProductButton.addEventListener('click', addProductButton);
 
+                //evento click botton + reducir una unidad
                 let $reduceProductButton = $tr.querySelector('.reduceProduct');
                 $reduceProductButton.addEventListener('click', reduceProductButton);
 
+                //evento click botton + eliminar el producto del shoppingList
                 let $deleteButton = document.querySelectorAll('.delete');
-                for (let $delButton of $deleteButton){
-                $delButton.addEventListener('click', deleteProduct);        
-                }              
-
+                for (let $delButton of $deleteButton) {
+                $delButton.addEventListener('click', deleteProduct);
+                }
         }
 
-
-        const $priceTotalSpan = document.querySelector('.priceTotalSpan');
+        let $priceTotalSpan = document.querySelector('.priceTotalSpan');//busco el span del Total y le asigo el valor de la variable totalPrice que se incializa en 0
         $priceTotalSpan.textContent = totalPrice + '€';
-
 }
 
+//funcion del evento click del botton + añadir una unidad adicional
 function addProductButton() {
-
-        const $row = this.closest('tr');
-        const productId = $row.dataset.id;
+        let $row = this.closest('tr');
+        let productId = $row.dataset.id;
         changeCountProduct(productId, 1);
-
 }
 
-
+//funcion del evento click del botton - reducir una uniad
 function reduceProductButton() {
-
-        const $row = this.closest('tr');
-        const productId = $row.dataset.id;
+        let $row = this.closest('tr');
+        let productId = $row.dataset.id;
         changeCountProduct(productId, -1);
-
 }
 
-function changeCountProduct(productId, change) {
+//funcion para añadir unidades o reducir unidades
+function changeCountProduct(productId, change) { 
 
-        if(shoppingList[productId].count + change > shoppingList[productId].stock){
-                alert('estas excediendo el stock');
+        if (shoppingList[productId].count + change > shoppingList[productId].stock) {// alerta en caso de que se soliciten mas unidad que las disponbles en stock salta una alerta
+                swal({
+                        text: 'Se ha excedido el número máximo de unidades disponibles de este producto',
+                        icon: 'warning',
+                        className: "alertPopup",
+                        button: {
+                                text: 'OK',
+                                className: 'buttonAlert',
+                        }
+                });
                 return;
         }
 
         const shoppingListProduct = shoppingList[productId];
-        shoppingListProduct.count += change;
-        if (shoppingList[productId].count <= 0) {
+        shoppingListProduct.count += change; //contador para añadir la cantidad que correponda segun el valor que le ponga al parametro change. que en este caso sera 1 para añadir un producto o -1 para reducirlo
+        if (shoppingList[productId].count <= 0) { //si la unidades llegan a cero, elimino el producto del carrito
         delete shoppingList[productId];
         }
-        
-        refreshShoppingList();       
-
+        refreshShoppingList();
 }
 
-
-function deleteProduct(){
-      
-        /*alert('hola');
-        $row = this.closest('tr');
-        if (this.dataset.id === $row.dataset.id){
-        this.closest('.trProduct').remove();
-        }*/
-
-
-
-
+//funcion del evento click del boton basura para elimar el producto del carrito de compras independientemente del numero de unidades que haya en el contador
+function deleteProduct() {
         $row = this.closest('tr');
         let productId = $row.dataset.id;
         delete shoppingList[productId];
         refreshShoppingList();
-       
-
 }
 
-
-
-
-
-
+//funcion del boton vaciar carrito de la compra
 function deleteShoppingList() {
-        shoppingList = {};
+        shoppingList = {}; //vacío el shoppingList
         refreshShoppingList();
-
 }
 
+//funcion del boton procesar comprar
 function proceedShoppingList() {
 
+        let totalPrice = 0; 
+        //repito la logica del calculo de totalPrice para poder aplicarle la condicion de si es === 0  o no en el evento click del boton prodeder con la compra.
 
-       let totalPrice = 0;
-       for (const productId in shoppingList) {
-
-        const product = shoppingList[productId];
-        totalPrice += product.count * product.price;
-
-       }
-
-       if (totalPrice === 0){
-
-        swal({
-
-                title: '¡Carrito Vacío!',
-                text: 'Por favor seleccione los productos deseados y proceda con la compra.',
-                icon: 'warning',
-                customClass: {
-
-                        popup: 'alertPopup', // Clase para el popup
-                        title: 'alertTitle', // Clase para el título
-                        content: 'alertContent' // Clase para el contenido
-                }
-                
-        });
-
-       
-
-       } else {
-
-       
-        swal({
-
-                title: 'Compra realizada con éxito',
-                text:  'Si desea consejos para cuidar sus plantas, no olvide visitar nuestro blog.',
-                icon: 'success',
-                customClass: {
-
-                        popup: 'alertPopup', // Clase para el popup
-                        title: 'alertTitle', // Clase para el título
-                        content: 'alertContent'
-
-                }
-        });
-       deleteShoppingList();
-
-       }
-}
-
-
-
-
-
-
-
-
-
-/*let productList = [];
-let unitCounter = 1;
-
-
-
-function addProduct() {
-
-
-
-        if (!productList.includes(this.dataset.id) && this.dataset.stock > 0) {
-
-                productList.push(this.dataset.id);
-                console.log(productList);
-
-
-                let $shopContainer = document.querySelector('.shopContainer');
-                let $shopTitle = $shopContainer.querySelector('h4:nth-child(1)');
-
-                let $productAdd = document.createElement('div');
-                $productAdd.classList.add('productAdd');
-                //$productAdd.textContent = 'hola';
-                $shopTitle.after($productAdd);
-                //console.log($productAdd);
-
-                let $productAddInfo = document.createElement('p');
-                $productAddInfo.classList.add = ('productAddInfo');
-                $productAddInfo.textContent = `${this.dataset.name} - € ${this.dataset.price} X`
-                $productAdd.appendChild($productAddInfo);
-
-
-                let $productUnitCounter = document.createElement('span');
-                $productUnitCounter.classList = ('counterSpan');
-                $productUnitCounter.textContent = 1;
-                $productUnitCounter.dataset.productStock = this.dataset.stock;
-                $productUnitCounter.dataset.productId = this.dataset.id;
-                $productAdd.appendChild($productUnitCounter);
-
-                let $productTotalInfo = document.createElement('span');
-                $productTotalInfo.classList = ('productTotalInfo');
-                $productTotalInfo.dataset.productId = this.dataset.id;
-                $productTotalInfo.textContent = this.dataset.price;
-                $productAdd.appendChild($productTotalInfo);
-
-
-                let $buttonAdd = document.createElement('button');
-                $buttonAdd.classList = 'buttonAdd';
-                $buttonAdd.textContent = '+';
-                $buttonAdd.dataset.productId = this.dataset.id;
-                $buttonAdd.dataset.productStock = this.dataset.stock;
-                $productAdd.appendChild($buttonAdd);
-
-
-                let $buttonSubtract = document.createElement('button');
-                $buttonSubtract.classList = 'buttonSubtract';
-                $buttonSubtract.textContent = '-';
-                $buttonSubtract.dataset.productId = this.dataset.id;
-                $buttonSubtract.dataset.productStock = this.dataset.stock;
-                $productAdd.appendChild($buttonSubtract);
-
-
-                let $buttonDelete = document.createElement('button');
-                $buttonDelete.classList = 'buttonDelete';
-                $buttonDelete.textContent = 'El';
-                $buttonDelete.dataset.productId = this.dataset.id;
-                $buttonDelete.dataset.productStock = this.dataset.stock;
-                $productAdd.appendChild($buttonDelete);
-
-
-
-
-        } else {
-
-
-                let $productUnitCounter = document.querySelector('.counterSpan[data-product-id="' + this.dataset.id + '"]');
-                unitCounter <= this.dataset.productStock
-                unitCounter++;
-                $productUnitCounter.textContent = unitCounter;
-
-                let $productTotalInfo = document.querySelector('.productTotalInfo[data-product-id="' + this.dataset.id + '"]');
-                $productTotalInfo.textContent = this.dataset.price * unitCounter;
-
-
+        for (let productId in shoppingList) {
+                let product = shoppingList[productId];
+                totalPrice += product.count * product.price;
         }
 
+        if (totalPrice === 0) {
+                swal({
+                        title: '¡Carrito Vacío!',
+                        text: 'Por favor seleccione los productos deseados y proceda con la compra.',
+                        icon: 'warning',
+                        className: "alertPopup",
+                        button: {
+                                text: 'OK',
+                                className: 'buttonAlert',
+                        }
+                });
+        } else {
+                swal({
+                        title: 'Compra realizada con éxito',
+                        text: 'Si desea consejos para cuidar sus plantas, no olvide visitar nuestro blog.',
+                        icon: 'success',
+                        className: "alertPopup",
+                        button: {
+                                text: 'OK',
+                                className: 'buttonAlert',
+                        }
+                });
+                deleteShoppingList();// una vez realiza la compra vacio el carro
+        }
+}
 
-}*/
-
-
-/* END EVENTO CLICK BOTON AGREGAR AL CARRITO*/
-
-
-
-
-init();
+init(); //llamo a la funcion init donde se incluian las funciones de la funcionalidad general del simulador de tienda online

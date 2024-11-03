@@ -36,8 +36,9 @@
             gap: 15px;
             background-color: #00B52E;
             position:static;
-            height: 80px;
+            height: 75px;
             line-height: 80px;
+            border-top: none;
 
             & li {
 

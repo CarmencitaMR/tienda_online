@@ -269,15 +269,25 @@ main {
 }
 
 
-.alertPopup {
 
-    background-color: yellow;
-}
+    .alertPopup {
 
-.alertContent {
+        background-color: #fafafa;
+        border: 3px solid #00B52E;
+        padding: 0 20px;
+        font-family: "Poppins";
+       
+    }
+    
+    .buttonAlert {
+        background-color: #00B52E;
+        color: #fafafa;
+        font-family: "Poppins";
+    }
 
-    color:#00B52E;
-}
+    
+
+
 
 
 /*END MAIN*/
