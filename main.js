@@ -290,12 +290,12 @@ function addProductButton() {
                                 className: 'buttonAlert',
                         }
                 });
-                return; //si se ha complido la condición de que solicito más unidad es que las disponibles en stock para la función para que siga ejecutandose y me deje seguir aumentando el contador de unidades a pesar del alert.
+               
+        } else {
+                const shoppingListProduct = shoppingList[productId];
+                shoppingListProduct.count += 1; //le añado 1 al contador de este producto
+                refreshShoppingList();
         }
-
-        const shoppingListProduct = shoppingList[productId];
-        shoppingListProduct.count += 1; //le añado 1 al contador de este producto
-        refreshShoppingList();
 }
 
 //funcion del evento click del botton, reducir una uniad
@@ -357,7 +357,10 @@ function proceedShoppingList() {
                                 className: 'buttonAlert',
                         }
                 });
-                deleteShoppingList();// una vez realiza la compra vacio el carro
+                setTimeout(() => {
+                        deleteShoppingList();
+                      }, "2000");
+                // una vez realiza la compra vacio el carro
         }
 }
 
