@@ -4,7 +4,7 @@ function init() { //funcion que agrupa el resto de funciones, facilita la lectur
         loadProducts();
         eventClickHamburguer();
         eventClickShopCart();
-        eventClickAddProductButton();
+        eventClickProductButtons();
 }
 
 function loadProducts() {
@@ -154,12 +154,12 @@ function showCart() { //1º click asigno la clase showCart que tiene un display 
 /*END EVENTO CLICK CARRITO COMPRA*/
 
 /*EVENTO CLICK AL BOTON AGREGAR AL CARRITO / VACIAR CARRITO / PROCEDER A LA COMPRA*/
-function eventClickAddProductButton() {
+function eventClickProductButtons() {
 
         //evento click botones de agregar al carrito
         let $buttonPlant = document.querySelectorAll('.buttonPlant'); 
         for (let $button of $buttonPlant) {
-        $button.addEventListener('click', addItemToShoppingList);
+        $button.addEventListener('click', addProductToShoppingList);
         }
         //evento click boton vaciar carrito
         let $shopButtonDelete = document.querySelector('.shopButtonDelete'); 
@@ -172,7 +172,7 @@ function eventClickAddProductButton() {
 /* FUNCIONALIDAD CARRTITO DE LA COMPRA*/
 let shoppingList = {}; //creo un objeto donde se pintaran los productos que añada al carrito
 
-function addItemToShoppingList() { 
+function addProductToShoppingList() { 
 
         let $containerPlant = this.closest('.containerPlant');
 
@@ -181,19 +181,41 @@ function addItemToShoppingList() {
         let price = $containerPlant.dataset.price;
         let stock = $containerPlant.dataset.stock;
 
-        if (!shoppingList.hasOwnProperty(id)) {//al hacer click en el boton añadir al carrito si la id del producto no está ya en el objeto shoppingList lo añade.
+
+        if (!shoppingList.hasOwnProperty(id) && this.dataset.stock > 0) {//al hacer click en el boton añadir al carrito si la id del producto no está ya en el objeto shoppingList y el stock no es cero lo añade.
 
                 shoppingList[id] = {//el producto tiene el id, name, price, stock del producto de la pildora que corresponda. Además tiene un contador para poder añadir 1 si no estuviera ya en la shoppinList y para poder añadir más o restar más unidades.
                         id: parseInt(id),
                         name: name,
                         price: parseInt(price),
-                        count: 0,
+                        count: 1,
                         stock: parseInt(stock)
                 };
-        }
 
-        changeCountProduct(id, 1); //le paso el parametro 1 para que añada 1 vez el producto correspondiente que no está aún en la shoppingList
-}
+        } else if (shoppingList.hasOwnProperty(id) && shoppingList[id].count < shoppingList[id].stock) { // comprueba que haya stock disponible
+                shoppingList[id].count += 1; // Aumenta el contador en 1
+        } else if (shoppingList.hasOwnProperty(id) && shoppingList[id].count === shoppingList[id].stock) { //si solicito mas unidades d ela que hay en stock me salta el alert
+                swal({
+                        text: 'Se ha excedido el número máximo de unidades disponibles de este producto',
+                        icon: 'warning',
+                        className: "alertPopup",
+                        button: {
+                                text: 'OK',
+                                className: 'buttonAlert',
+                        }
+                });        
+        } else {// si no se cumplen las condiciones anteriores es decir el stock es 0 salta un alert
+                swal({
+                        text: 'Lo sentimos, este producto esta temporalmente fuera de stock',
+                        className: "alertPopup",
+                        button: {
+                                text: 'OK',
+                                className: 'buttonAlert',
+                        }
+                });        
+            }
+            refreshShoppingList(); //actualizo el carrito de compras
+        }
 
 function refreshShoppingList() { //actualizo el carrito de compras
 
@@ -248,32 +270,17 @@ function refreshShoppingList() { //actualizo el carrito de compras
 
                 //evento click botton + eliminar el producto del shoppingList
                 let $deleteButton = $tr.querySelector('.delete');
-                $deleteButton.addEventListener('click', deleteProduct);
-                
+                $deleteButton.addEventListener('click', deleteProduct);        
         }
-
         let $priceTotalSpan = document.querySelector('.priceTotalSpan');//busco el span del Total y le asigo el valor de la variable totalPrice que se incializa en 0
         $priceTotalSpan.textContent = totalPrice + '€';
 }
 
-//funcion del evento click del botton + añadir una unidad adicional
+//funcion del evento click del botton, añadir una unidad adicional
 function addProductButton() {
         let $row = this.closest('tr');
         let productId = $row.dataset.id;
-        changeCountProduct(productId, 1);
-}
-
-//funcion del evento click del botton - reducir una uniad
-function reduceProductButton() {
-        let $row = this.closest('tr');
-        let productId = $row.dataset.id;
-        changeCountProduct(productId, -1);
-}
-
-//funcion para añadir unidades o reducir unidades
-function changeCountProduct(productId, change) { 
-
-        if (shoppingList[productId].count + change > shoppingList[productId].stock) {// alerta en caso de que se soliciten mas unidad que las disponbles en stock salta una alerta
+        if (shoppingList[productId].count + 1 > shoppingList[productId].stock) {//si se solicitan mas unidades de las disponible en stock salta un alert
                 swal({
                         text: 'Se ha excedido el número máximo de unidades disponibles de este producto',
                         icon: 'warning',
@@ -283,11 +290,20 @@ function changeCountProduct(productId, change) {
                                 className: 'buttonAlert',
                         }
                 });
-                return;
+                return; //si se ha complido la condición de que solicito más unidad es que las disponibles en stock para la función para que siga ejecutandose y me deje seguir aumentando el contador de unidades a pesar del alert.
         }
 
         const shoppingListProduct = shoppingList[productId];
-        shoppingListProduct.count += change; //contador para añadir la cantidad que correponda segun el valor que le ponga al parametro change. que en este caso sera 1 para añadir un producto o -1 para reducirlo
+        shoppingListProduct.count += 1; //le añado 1 al contador de este producto
+        refreshShoppingList();
+}
+
+//funcion del evento click del botton, reducir una uniad
+function reduceProductButton() {
+        let $row = this.closest('tr');
+        let productId = $row.dataset.id;
+        const shoppingListProduct = shoppingList[productId];
+        shoppingListProduct.count -= 1; // le quito 1 al contador de este producto
         if (shoppingList[productId].count <= 0) { //si la unidades llegan a cero, elimino el producto del carrito
         delete shoppingList[productId];
         }
