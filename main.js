@@ -247,10 +247,9 @@ function refreshShoppingList() { //actualizo el carrito de compras
                 $reduceProductButton.addEventListener('click', reduceProductButton);
 
                 //evento click botton + eliminar el producto del shoppingList
-                let $deleteButton = document.querySelectorAll('.delete');
-                for (let $delButton of $deleteButton) {
-                $delButton.addEventListener('click', deleteProduct);
-                }
+                let $deleteButton = $tr.querySelector('.delete');
+                $deleteButton.addEventListener('click', deleteProduct);
+                
         }
 
         let $priceTotalSpan = document.querySelector('.priceTotalSpan');//busco el span del Total y le asigo el valor de la variable totalPrice que se incializa en 0
